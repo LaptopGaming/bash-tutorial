@@ -1,5 +1,14 @@
 #!/bin/bash
-echo What do you want to search?
-read SEARCH
-echo Searching for \"$SEARCH\"...
-firefox http://www.google.com/search?q="$SEARCH"
+SEARCH=q
+echo What do you want to search for?
+while [ "$SEARCH" != "done" ]
+do
+ if [ "$SEARCH" != "q" ]
+ then
+  echo Searching for \"$SEARCH\"...
+  firefox http://www.google.com/search?q="$SEARCH" &
+  echo Anything else?
+ fi
+ read SEARCH
+done
+echo Stopping
